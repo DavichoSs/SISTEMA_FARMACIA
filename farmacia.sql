@@ -437,3 +437,135 @@ alter table SUCURSAL
       references TIPO_SUCURSAL (ID_TIPO)
 go
 
+/*PROCEDIMIENTOS ALMACENADOS*/
+SELECT * FROM CLIENTE
+
+Create Procedure IngresarCliente(
+	@ci_cli int,
+	@id_suc int,
+	@nomcli varchar(30),
+	@apecli varchar (30),
+	@emailcli varchar (30),
+	@tlfcli int
+)AS INSERT INTO CLIENTE(CI_CLI, ID_SUC,NOM_CLI,APE_CLI,EMAIL_CLI,TLF_CLI) 
+	VALUES (@ci_cli ,@id_suc,@nomcli,@apecli,@emailcli, @tlfcli)
+
+Create Procedure EliminarCliente(
+	@cicli int
+)AS DELETE CLIENTE WHERE CI_CLI = @cicli
+
+CREATE PROCEDURE ActualizarCliente (
+	@cicli int,
+	@emailcli varchar(30),
+	@tlfcli int
+)AS UPDATE CLIENTE set EMAIL_CLI=@emailcli, TLF_CLI=@tlfcli WHERE CI_CLI=@cicli 
+
+----PROVEEDOR
+Select * FROm PROVEEDOR
+Create Procedure IngrProveedor (
+	@ruc int,
+	@nompvr varchar (30),
+	@razon varchar (30),
+	@dirpvr varchar (30),
+	@tlf int,
+	@emailpvr varchar (30)
+)AS INSERT INTO PROVEEDOR (RUC_PVDR,NOM_PVDR,RAZONSOCIAL_PVDR, DIR_PVDR, TLF_PVDR, EMAIL_PVDR)
+	VALUES (@ruc, @nompvr, @razon,@dirpvr,@tlf,@emailpvr)
+
+Create Procedure ActualizarPvr(
+	@ruc int,
+	@dirpvr varchar (30), 
+	@tlf int,
+	@emailpvr varchar (30)
+)AS UPDATE PROVEEDOR SET DIR_PVDR=@dirpvr, TLF_PVDR=@tlf, EMAIL_PVDR=@emailpvr WHERE RUC_PVDR=@ruc
+
+---- SUCURSAL
+SELECT * FROM SUCURSAL 
+
+Create Procedure IngrSucur(
+	@idsuc int,
+	@id_tip int,
+	@dirsuc varchar (30),
+	@tlf int,
+	@respon varchar (30),
+	@ciudadsuc varchar (30)
+)AS INSERT INTO SUCURSAL (ID_SUC,ID_TIPO, DIR_SUC, TLF_SUC, RESPONSABLE_SUC, CIUDAD_SUC)
+	VALUES (@idsuc,@id_tip,@dirsuc,@tlf,@respon,@ciudadsuc)
+
+Create Procedure ActSucur (
+	@idsucur int,
+	@respon varchar (30),
+	@telf int
+)AS UPDATE SUCURSAL SET RESPONSABLE_SUC=@respon, TLF_SUC=@telf WHERE ID_SUC=@idsucur
+
+---- Cabecera Factura
+SELECT * FROM CABECERA_FAC
+
+Create Procedure IngrCabFact(
+	@numfac int,
+	@cicli int,
+	@sri int
+)AS INSERT INTO CABECERA_FAC (NUMFAC_CAB, CI_CLI, SRI_CAB)
+	VALUES (@numfac, @cicli, @sri)
+--- DETALLE FACTURA 
+SElect * FROM DETALLE_FAC
+Create Procedure IngrDetalFact (
+	@cantidad int,
+	@idProd int,
+	@numfact int,
+	@descr varchar (30),
+	@valorT decimal,
+	@iva decimal,
+	@desct decimal,
+	@totalpagr decimal
+)AS INSERT INTO DETALLE_FAC (CANT_DET,ID_PROD,NUMFAC_CAB,DESC_DET,VT_DET,IVA_DET,DSCTO_DET,TOTALPAGAR_DET)
+	VALUES (@cantidad,@idProd,@numfact,@descr,@valorT,@iva,@desct,@totalpagr)
+
+----- PRODUCTO
+SELECT * FROM PRODUCTO 
+CREATE PROCEDURE IngrProd (
+	@idprod int,
+	@idsuc int,
+	@rucpvr int,
+	@nombprod varchar (30),
+	@descrprod varchar (30),
+	@puprod decimal,
+	@stockprod int 
+)AS INSERT INTO PRODUCTO (ID_PROD,ID_SUC,RUC_PVDR,NOM_PROD,DES_PROD,PU_PROD,STOCK_PROD)
+	VALUES (@idprod,@idsuc,@rucpvr,@nombprod,@descrprod,@puprod,@stockprod)
+
+Create Procedure EliminarPrd(
+	@idprod int
+)AS DELETE PRODUCTO WHERE ID_PROD=@idprod
+
+Create Procedure ActualizarProd (
+	@idprod int,
+	@descrProd varchar (30),
+	@puprod decimal,
+	@stockprod decimal
+)AS UPDATE PRODUCTO SET DES_PROD=@descrProd, PU_PROD=@puprod, STOCK_PROD=@stockprod WHERE ID_PROD=@idprod
+
+---- Empleado
+SELECT * FROM EMPLEADO
+Create Procedure IngrEmpl (
+	@ciempl int,
+	@id_carg int,
+	@id_suc int,
+	@nombempl varchar (30),
+	@apelempl varchar (30),
+	@emailempl varchar (30),
+	@tlfempl int
+)AS INSERT INTO EMPLEADO (CI_EMPL,ID_CAR,ID_SUC,NOM_EMPL,APE_EMPL,EMAIL_EMPL,TLF_EMPL)
+	VALUES (@ciempl,@id_carg,@id_suc,@nombempl,@apelempl,@emailempl,@tlfempl)
+
+Create Procedure EliminarEmpl (
+	@ciempl int
+)AS DELETE EMPLEADO WHERE CI_EMPL=@ciempl
+
+CREATE PROCEDURE ActualizarEmpl(
+	@ciempl int,
+	@idcarg int,
+	@email varchar (30),
+	@tlf int
+)AS UPDATE EMPLEADO SET ID_CAR=@idcarg, EMAIL_EMPL=@email, TLF_EMPL=@tlf WHERE CI_EMPL=@ciempl
+
