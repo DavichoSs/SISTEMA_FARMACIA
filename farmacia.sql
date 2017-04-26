@@ -437,3 +437,54 @@ alter table SUCURSAL
       references TIPO_SUCURSAL (ID_TIPO)
 go
 
+
+insert into TIPO_SUCURSAL values(1,'Principal')
+insert into TIPO_SUCURSAL values(2,'Suc_Norte')
+insert into TIPO_SUCURSAL values(3,'Suc_Sur')
+insert into TIPO_SUCURSAL values(4,'Suc_Valle')
+
+insert into CARGO values(11,'Gerente')
+insert into CARGO values(22,'Sub Gerente')
+insert into CARGO values(33,'Administador')
+insert into CARGO values(44,'Cajero')
+insert into CARGO values(55,'Empleado')
+insert into CARGO values(66,'Auxiliar')
+
+insert into CLIENTE values(1718130733,1,'Rubén', 'Pozo','rpozo@gmail.com',5006327)
+insert into CLIENTE values(1712457733,1,'María', 'Pérez','mperez@gmail.com',5124527)
+insert into CLIENTE values(1712130733,2,'Carlos', 'Ochoa','cochoa@gmail.com',2014327)
+insert into CLIENTE values(1718140235,2,'José', 'Terán','jteran@gmail.com',1105327)
+insert into CLIENTE values(1719130722,2,'Isabel', 'Pantoja','ipantoja@gmail.com',5006111)
+insert into CLIENTE values(17201307300,3,'Jean', 'Chamba','jchamba@gmail.com',1206311)
+insert into CLIENTE values(1717130705,3,'Marco', 'Zurita','mzurita@gmail.com',6006327)
+insert into CLIENTE values(19548130111,4,'Susana', 'Peña','speña@gmail.com',4525365)
+
+insert into SUCURSAL values(1,1,'Amazonas n12', 5688522,'Angel Mena','Quito')
+insert into SUCURSAL values(2,4,'Carcelen n66', 3338522,'patricia Flores','Quito')
+insert into SUCURSAL values(3,2,'Chillogallo E10', 2288524,'Carolina Suarez','Guayaquil')
+insert into SUCURSAL values(4,3,'Cumbaya S05', 5688147,'José Chamba','Esmeraldas')
+
+insert into PROVEEDOR values(1,'TECNOFARM','FARMACI','QUITO',59897654,'farm1@gmail.com')
+insert into PROVEEDOR values(2,'CURASAN','FARMACI2','GUAYAQUIL',112497654,'farm2@gmail.com')
+insert into PROVEEDOR values(3,'MEDICTEC','FARMACI3','MANTA',14563654,'farm3@gmail.com')
+insert into PROVEEDOR values(4,'FARMLIN','FARMACI4','CUANCA',3357654,'farm4@gmail.com')
+
+insert into PRODUCTO values(10,2,3,'ASPIRINA','CURA DOLOR DE CABEZA',5.20,45)
+insert into PRODUCTO values(20,1,4,'TEMPRA','BAJA LA FIEBRE',6.90,20)
+insert into PRODUCTO values(30,3,2,'IBUPROFENO','CALMA EL DOLOR',3.50,30)
+insert into PRODUCTO values(40,4,1,'CURITAS','PARA CORTADURAS',1.810,10)
+
+insert into EMPLEADO values(191161301,44,1,'Susana', 'Peña','speña@gmail.com',4526665)
+insert into EMPLEADO values(195481303,33,2,'Carmen', 'Lopez','cperez@gmail.com',3655365)
+insert into EMPLEADO values(19548130,11,3,'Teresa', 'León','tleon@gmail.com',4525311)
+insert into EMPLEADO values(18568130,22,4,'Mario', 'Simbaña','msimbaña@gmail.com',5895365)
+
+Insert into DETALLE_FAC values (2,10,1,'curitas',3.52,0.14,0.5, 3.69)
+Insert into DETALLE_FAC values (6,30,2,'aspirinas',5.52,0.14,0.3, 9.69)
+Insert into DETALLE_FAC values (8,40,3,'tempra',7.52,0.14,0.2, 8.69)
+Insert into DETALLE_FAC values (10,20,4,'ibuprofeno',6.45,0.14,0.8, 7.69)
+
+Insert into CABECERA_FAC values (1,1718130733,4)
+Insert into CABECERA_FAC values (2,1712457733,3)
+Insert into CABECERA_FAC values (3,1712130733,2)
+Insert into CABECERA_FAC values (4,1718140235,1)
